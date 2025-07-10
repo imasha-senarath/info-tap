@@ -1,4 +1,4 @@
-package com.imasha.infotap.domain.data
+package com.imasha.infotap.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore
