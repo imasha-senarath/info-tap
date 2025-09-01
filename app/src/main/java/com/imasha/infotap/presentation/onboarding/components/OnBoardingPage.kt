@@ -21,7 +21,6 @@ import com.imasha.infotap.ui.theme.InfoTapTheme
 
 @Composable
 fun OnBoardingPage(
-    modifier: Modifier = Modifier,
     page: Page
 ) {
     Column(modifier = Modifier) {

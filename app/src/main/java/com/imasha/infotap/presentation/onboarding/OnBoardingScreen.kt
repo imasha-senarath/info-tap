@@ -18,7 +18,6 @@ import com.imasha.infotap.presentation.onboarding.components.OnBoardingPage
 import com.imasha.infotap.presentation.onboarding.components.PagerIndicator
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingScreen(
     event: (OnBoardingEvent) -> Unit
