@@ -82,4 +82,10 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation (libs.androidx.hilt.navigation.compose)
+
+    //Compose Navigation
+    implementation (libs.androidx.navigation.compose)
+
+    //Accompanist
+    implementation (libs.accompanist.systemuicontroller)
 }

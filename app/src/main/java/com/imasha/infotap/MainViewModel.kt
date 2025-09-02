@@ -1,6 +1,5 @@
 package com.imasha.infotap
 
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -32,8 +31,10 @@ class MainViewModel @Inject constructor(
             }else{
                 startDestination = Route.AppStartNavigation.route
             }
-            delay(100)
+            delay(300)
+
             splashCondition = false
+
         }.launchIn(viewModelScope)
     }
 }
