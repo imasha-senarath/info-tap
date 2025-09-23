@@ -1,4 +1,4 @@
-package com.imasha.infotap.domain.usecases
+package com.imasha.infotap.domain.usecases.app_entry
 
 import com.imasha.infotap.domain.manager.LocalUserManager
 import javax.inject.Inject

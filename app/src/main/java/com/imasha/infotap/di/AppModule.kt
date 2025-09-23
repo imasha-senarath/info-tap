@@ -3,9 +3,9 @@ package com.imasha.infotap.di
 import android.app.Application
 import com.imasha.infotap.data.LocalUserMangerImpl
 import com.imasha.infotap.domain.manager.LocalUserManager
-import com.imasha.infotap.domain.usecases.AppEntryUseCases
-import com.imasha.infotap.domain.usecases.ReadAppEntry
-import com.imasha.infotap.domain.usecases.SaveAppEntry
+import com.imasha.infotap.domain.usecases.app_entry.AppEntryUseCases
+import com.imasha.infotap.domain.usecases.app_entry.ReadAppEntry
+import com.imasha.infotap.domain.usecases.app_entry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
