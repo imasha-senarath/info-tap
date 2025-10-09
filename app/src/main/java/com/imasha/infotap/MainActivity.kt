@@ -12,8 +12,9 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.imasha.infotap.presentation.navgraph.NavGraph
+import com.imasha.infotap.ui.navigation.AppNavGraph
 import com.imasha.infotap.ui.theme.InfoTapTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,8 +43,11 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    val startDestination = viewModel.startDestination
-                    NavGraph(startDestination = startDestination)
+                    val navController = rememberNavController()
+                    AppNavGraph(navController)
+
+                    /*val startDestination = viewModel.startDestination
+                    NavGraph(startDestination = startDestination)*/
                 }
             }
         }
