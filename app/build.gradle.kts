@@ -65,6 +65,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.volley)
+    implementation(libs.androidx.espresso.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -97,4 +99,7 @@ dependencies {
     //Paging 3
     implementation (libs.androidx.paging.runtime.ktx)
     implementation (libs.androidx.paging.compose)
+
+    //Coil
+    implementation(libs.coil.compose)
 }

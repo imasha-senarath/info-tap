@@ -1,4 +1,4 @@
-package com.imasha.infotap.domain.usecases.news
+package com.imasha.infotap.domain.usecases
 
 import androidx.paging.PagingData
 import com.imasha.infotap.domain.model.Article

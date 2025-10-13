@@ -2,7 +2,7 @@ package com.imasha.infotap.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.imasha.infotap.domain.usecases.app_entry.AppEntryUseCases
+import com.imasha.infotap.domain.usecases.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

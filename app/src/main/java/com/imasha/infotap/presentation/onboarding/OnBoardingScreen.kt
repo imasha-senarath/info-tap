@@ -1,6 +1,5 @@
 package com.imasha.infotap.presentation.onboarding
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -10,10 +9,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.imasha.infotap.presentation.Dimens.MediumPadding2
-import com.imasha.infotap.presentation.Dimens.PageIndicatorWidth
-import com.imasha.infotap.presentation.common.AppButton
-import com.imasha.infotap.presentation.common.AppTextButton
+import com.imasha.infotap.utils.Dimens.MediumPadding2
+import com.imasha.infotap.utils.Dimens.PageIndicatorWidth
+import com.imasha.infotap.ui.components.AppButton
+import com.imasha.infotap.ui.components.AppTextButton
 import com.imasha.infotap.presentation.onboarding.components.OnBoardingPage
 import com.imasha.infotap.presentation.onboarding.components.PagerIndicator
 import kotlinx.coroutines.launch

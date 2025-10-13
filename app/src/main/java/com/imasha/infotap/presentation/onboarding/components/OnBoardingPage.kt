@@ -12,8 +12,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.imasha.infotap.presentation.Dimens.MediumPadding1
-import com.imasha.infotap.presentation.Dimens.MediumPadding2
+import com.imasha.infotap.utils.Dimens.MediumPadding1
+import com.imasha.infotap.utils.Dimens.MediumPadding2
 import com.imasha.infotap.presentation.onboarding.Page
 import com.imasha.infotap.R
 import com.imasha.infotap.presentation.onboarding.pages

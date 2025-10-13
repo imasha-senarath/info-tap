@@ -1,4 +1,4 @@
-package com.imasha.infotap.presentation.common
+package com.imasha.infotap.ui.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*

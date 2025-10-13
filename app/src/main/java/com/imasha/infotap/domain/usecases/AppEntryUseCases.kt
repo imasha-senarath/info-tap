@@ -1,4 +1,4 @@
-package com.imasha.infotap.domain.usecases.app_entry
+package com.imasha.infotap.domain.usecases
 
 data class AppEntryUseCases(
     val readAppEntry: ReadAppEntry,

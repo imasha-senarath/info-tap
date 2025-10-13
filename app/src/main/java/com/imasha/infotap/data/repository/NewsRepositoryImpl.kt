@@ -1,4 +1,4 @@
-package com.imasha.infotap.data.remote.repository
+package com.imasha.infotap.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
