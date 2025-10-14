@@ -12,7 +12,7 @@ import com.imasha.infotap.presentation.onboarding.OnBoardingViewModel
 
 @Composable
 fun NavGraph(
-    startDestination: String
+    startDestination: String= Route.SplashScreen.route
 ) {
     val navController = rememberNavController()
 

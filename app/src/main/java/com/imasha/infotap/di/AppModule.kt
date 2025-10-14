@@ -11,6 +11,7 @@ import com.imasha.infotap.domain.usecases.GetNews
 import com.imasha.infotap.domain.usecases.NewsUseCases
 import com.imasha.infotap.domain.usecases.ReadAppEntry
 import com.imasha.infotap.domain.usecases.SaveAppEntry
+import com.imasha.infotap.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,7 +44,7 @@ object AppModule {
     fun provideApiInstance(): NewsApi {
         return Retrofit
             .Builder()
-            .baseUrl("BASE_URL")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NewsApi::class.java)

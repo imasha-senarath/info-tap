@@ -8,6 +8,8 @@ sealed class Route(
 ) {
     object OnBoardingScreen : Route(route = "onBoardingScreen")
 
+    object SplashScreen : Route(route = "splashScreen")
+
     object HomeScreen : Route(route = "homeScreen")
 
     object SearchScreen : Route(route = "searchScreen")
