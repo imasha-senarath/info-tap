@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.imasha.infotap.R
+import com.imasha.infotap.ui.navigation.Routes
 
 @Composable
 fun SplashScreen(
@@ -37,20 +38,20 @@ fun SplashScreen(
         result.onSuccess { isAuthenticated ->
             when {
                 isAuthenticated -> {
-                    navController.navigate("home") {
-                        popUpTo("splash") { inclusive = true }
+                    navController.navigate(Routes.HomeScreen.route) {
+                        popUpTo(Routes.SplashScreen.route) { inclusive = true }
                     }
                 }
 
                 else -> {
-                    navController.navigate("login") {
-                        popUpTo("splash") { inclusive = true }
+                    navController.navigate(Routes.LoginScreen.route) {
+                        popUpTo(Routes.SplashScreen.route) { inclusive = true }
                     }
                 }
             }
         }.onFailure {
-            navController.navigate("login") {
-                popUpTo("splash") { inclusive = true }
+            navController.navigate(Routes.LoginScreen.route) {
+                popUpTo(Routes.SplashScreen.route) { inclusive = true }
             }
         }
     }

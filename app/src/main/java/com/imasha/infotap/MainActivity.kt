@@ -12,12 +12,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.rememberNavController
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.imasha.infotap.ui.navigation.AppNavGraph
-import com.imasha.infotap.ui.screens.home.HomeViewModel
+import com.imasha.infotap.ui.navigation.NavGraph
 import com.imasha.infotap.ui.theme.InfoTapTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,9 +25,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen().apply {
-            setKeepOnScreenCondition{
+ /*           setKeepOnScreenCondition{
                 viewModel.splashCondition
-            }
+            }*/
         }
         setContent {
             InfoTapTheme {
@@ -46,13 +42,13 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    val navController = rememberNavController()
+                    /*val navController = rememberNavController()
                     val homeViewModel: HomeViewModel = hiltViewModel()
                     val articles = homeViewModel.news.collectAsLazyPagingItems()
-                    AppNavGraph(navController, articles)
+                    AppNavGraph(navController, articles)*/
 
-                    /*val startDestination = viewModel.startDestination
-                    NavGraph(startDestination = startDestination)*/
+                    //val startDestination = viewModel.startDestination
+                    NavGraph()
                 }
             }
         }
