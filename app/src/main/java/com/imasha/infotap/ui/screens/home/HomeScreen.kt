@@ -23,17 +23,22 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.imasha.infotap.R
-import com.imasha.infotap.domain.model.Article
 import com.imasha.infotap.ui.components.ArticlesList
 import com.imasha.infotap.ui.components.BottomNavigation
 import com.imasha.infotap.ui.components.SearchBar
 import com.imasha.infotap.utils.Dimens.MediumPadding1
 
 @Composable
-fun HomeScreen(navController: NavController, articles: LazyPagingItems<Article>, ) {
+fun HomeScreen(
+    navController: NavController,
+    viewModel: HomeViewModel = hiltViewModel(),
+) {
+    val articles = viewModel.news.collectAsLazyPagingItems()
+
     val titles by remember {
         derivedStateOf {
             if (articles.itemCount > 10) {

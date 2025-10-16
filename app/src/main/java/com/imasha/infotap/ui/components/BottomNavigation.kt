@@ -1,6 +1,7 @@
 package com.imasha.infotap.ui.components
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
@@ -10,14 +11,19 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.imasha.infotap.ui.navigation.Routes
 
 @Composable
 fun BottomNavigation(navController: NavController) {
     val items = listOf("Home", "Saved", "Settings")
     val icons = listOf(Icons.Default.Home, Icons.Default.Star, Icons.Default.Settings)
 
-    NavigationBar {
+    NavigationBar (
+        modifier = Modifier.height(60.dp)
+    ) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 icon = { Icon(icons[index], contentDescription = item) },
@@ -25,11 +31,11 @@ fun BottomNavigation(navController: NavController) {
                 selected = false,
                 onClick = {
                     when (item) {
-                        "Home" -> navController.navigate("home") {
+                        "Home" -> navController.navigate(Routes.HomeScreen.route) {
                             popUpTo("home") { inclusive = true }
                         }
-                        "Saved" -> navController.navigate("saved")
-                        "Settings" -> navController.navigate("settings")
+                        "Saved" -> navController.navigate(Routes.SavedScreen.route)
+                        "Settings" -> navController.navigate(Routes.SettingScreen.route)
                     }
                 }
             )
