@@ -11,6 +11,7 @@ import com.imasha.infotap.domain.usecases.GetNews
 import com.imasha.infotap.domain.usecases.NewsUseCases
 import com.imasha.infotap.domain.usecases.ReadAppEntry
 import com.imasha.infotap.domain.usecases.SaveAppEntry
+import com.imasha.infotap.domain.usecases.SearchNews
 import com.imasha.infotap.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -65,6 +66,7 @@ object AppModule {
     ): NewsUseCases {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
+            searchNews = SearchNews(newsRepository)
         )
     }
 }

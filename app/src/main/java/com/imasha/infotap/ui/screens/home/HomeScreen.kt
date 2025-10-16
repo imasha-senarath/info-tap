@@ -30,6 +30,7 @@ import com.imasha.infotap.R
 import com.imasha.infotap.ui.components.ArticlesList
 import com.imasha.infotap.ui.components.BottomNavigation
 import com.imasha.infotap.ui.components.SearchBar
+import com.imasha.infotap.ui.navigation.Routes
 import com.imasha.infotap.utils.Dimens.MediumPadding1
 
 @Composable
@@ -94,7 +95,7 @@ fun HomeScreen(
                 onValueChange = {},
                 onSearch = {},
                 onClick = {
-                    //navigate(Route.SearchScreen.route)
+                    navController.navigate(Routes.SearchScreen.route)
                 }
             )
 

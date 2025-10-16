@@ -7,6 +7,8 @@ sealed class Routes(val route: String) {
 
     data object HomeScreen : Routes(route = "homeScreen")
 
+    data object SearchScreen : Routes(route = "searchScreen")
+
     data object SavedScreen : Routes(route = "savedScreen")
 
     data object SettingScreen : Routes(route = "settingScreen")
