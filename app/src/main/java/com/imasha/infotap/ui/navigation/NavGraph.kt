@@ -15,7 +15,7 @@ import com.imasha.infotap.ui.screens.splash.SplashScreen
 fun NavGraph() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.SplashScreen.route) {
+    NavHost(navController = navController, startDestination = Routes.LoginScreen.route) {
 
         composable(Routes.SplashScreen.route) {
             SplashScreen(navController)

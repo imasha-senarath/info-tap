@@ -9,6 +9,7 @@ import com.imasha.infotap.data.remote.SearchNewsPagingSource
 import com.imasha.infotap.domain.model.Article
 import com.imasha.infotap.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class NewsRepositoryImpl(private val newsApi: NewsApi): NewsRepository {
 
@@ -32,5 +33,13 @@ class NewsRepositoryImpl(private val newsApi: NewsApi): NewsRepository {
                 )
             }
         ).flow
+    }
+
+    override fun login(username: String, password: String): Flow<Result<Boolean>> = flow {
+        if(username == "imasha" && password == "123456") {
+            emit(Result.success(true))
+        } else {
+            emit(Result.success(false))
+        }
     }
 }
