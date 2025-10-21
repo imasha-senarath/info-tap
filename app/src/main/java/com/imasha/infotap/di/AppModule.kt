@@ -8,6 +8,7 @@ import com.imasha.infotap.domain.manager.LocalUserManager
 import com.imasha.infotap.domain.repository.NewsRepository
 import com.imasha.infotap.domain.usecases.AppEntryUseCases
 import com.imasha.infotap.domain.usecases.GetNews
+import com.imasha.infotap.domain.usecases.LoginUseCase
 import com.imasha.infotap.domain.usecases.NewsUseCases
 import com.imasha.infotap.domain.usecases.ReadAppEntry
 import com.imasha.infotap.domain.usecases.SaveAppEntry
@@ -68,5 +69,13 @@ object AppModule {
             getNews = GetNews(newsRepository),
             searchNews = SearchNews(newsRepository)
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoginUseCases(
+        newsRepository: NewsRepository
+    ): LoginUseCase {
+        return LoginUseCase(newsRepository)
     }
 }

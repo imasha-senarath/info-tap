@@ -10,5 +10,7 @@ interface NewsRepository {
 
     fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>>
 
-    fun login(username: String, password: String): Flow<Result<Boolean>>
+    //fun login(username: String, password: String): Flow<Result<Boolean>>
+
+    suspend fun login(email: String, password: String): Boolean
 }

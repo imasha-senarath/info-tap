@@ -1,6 +1,5 @@
 package com.imasha.infotap.ui.screens.login
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,11 +9,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,7 +39,8 @@ fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel(),
 ) {
-    val context = LocalContext.current
+    val state by viewModel.state.collectAsState()
+
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -105,11 +107,24 @@ fun LoginScreen(
                     .fillMaxWidth()
                     .height(55.dp),
                 shape = MaterialTheme.shapes.medium,
-                onClick = {
-                    Toast.makeText(context, "Button Clicked.", Toast.LENGTH_SHORT).show()
-                }
+                onClick = { viewModel.onEvent(LoginEvent.Submit(email, password)) }
             ) {
                 Text("Login")
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            when (state) {
+                is LoginState.Loading -> CircularProgressIndicator()
+                is LoginState.Success -> Text(
+                    (state as LoginState.Success).message,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                is LoginState.Error -> Text(
+                    (state as LoginState.Error).message,
+                    color = MaterialTheme.colorScheme.error
+                )
+                else -> {}
             }
         }
     }
