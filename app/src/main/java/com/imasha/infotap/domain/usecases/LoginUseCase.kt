@@ -7,6 +7,10 @@ class LoginUseCase(private val newsRepository: NewsRepository) {
         newsRepository.login(email, password)*/
 
     suspend operator fun invoke(email: String, password: String): Result<Boolean> {
+        if (email.isBlank() || password.isBlank()) {
+            return Result.failure(Exception("Fields cannot be empty"))
+        }
+
         try {
             val result = newsRepository.login(email, password)
             return if (result) Result.success(true)

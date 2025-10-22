@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.imasha.infotap.utils.AppDialog
 import com.imasha.infotap.utils.Dimens.ExtraSmallPadding2
 import com.imasha.infotap.utils.Dimens.MediumPadding1
 
@@ -39,6 +40,8 @@ fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel(),
 ) {
+    val context = LocalContext.current
+
     val state by viewModel.state.collectAsState()
 
     var email by remember { mutableStateOf("") }
@@ -116,14 +119,11 @@ fun LoginScreen(
 
             when (state) {
                 is LoginState.Loading -> CircularProgressIndicator()
-                is LoginState.Success -> Text(
-                    (state as LoginState.Success).message,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                is LoginState.Error -> Text(
-                    (state as LoginState.Error).message,
-                    color = MaterialTheme.colorScheme.error
-                )
+                is LoginState.Success -> AppDialog.showToast(context, "Login Success")
+                is LoginState.Error -> {
+                    AppDialog.showToast(context, (state as LoginState.Error).message)
+                    viewModel.resetState()
+                }
                 else -> {}
             }
         }
