@@ -43,8 +43,19 @@ class NewsRepositoryImpl(private val newsApi: NewsApi): NewsRepository {
         }
     }*/
 
-    override suspend fun login(email: String, password: String): Boolean {
+    /*override suspend fun login(email: String, password: String): Boolean {
         delay(2000)
         return email == "imasha@gmail.com" && password == "1234"
+    }*/
+
+    override suspend fun login(email: String, password: String): Result<Boolean> {
+        delay(2000) // server simulation
+
+        return try {
+            if(email == "imasha@gmail.com" && password == "1234") Result.success(true)
+            else Result.failure(Exception("Invalid credentials"))
+        } catch (e: Exception) {
+            Result.failure(Exception("Login failed: ${e.message}"))
+        }
     }
 }

@@ -12,5 +12,5 @@ interface NewsRepository {
 
     //fun login(username: String, password: String): Flow<Result<Boolean>>
 
-    suspend fun login(email: String, password: String): Boolean
+    suspend fun login(email: String, password: String): Result<Boolean>
 }
