@@ -15,7 +15,7 @@ import com.imasha.infotap.ui.screens.splash.SplashScreen
 fun NavGraph() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.LoginScreen.route) {
+    NavHost(navController = navController, startDestination = Routes.SplashScreen.route) {
 
         composable(Routes.SplashScreen.route) {
             SplashScreen(navController)
@@ -31,7 +31,7 @@ fun NavGraph() {
 
         composable(Routes.SearchScreen.route) {
             val viewModel: SearchViewModel = hiltViewModel()
-            SearchScreen (viewModel.state.value, {})
+            SearchScreen (viewModel.state.value) {}
         }
 
         /*navigation(

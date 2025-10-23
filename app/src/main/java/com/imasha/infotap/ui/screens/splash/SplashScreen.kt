@@ -10,8 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -27,32 +27,16 @@ fun SplashScreen(
     navController: NavController,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
-    val splashState by viewModel.splashState.observeAsState()
+    val state by viewModel.state.collectAsState()
 
-    LaunchedEffect(Unit) {
-        viewModel.userAuthentication(2000)
-    }
-
-    // Observe result
-    splashState?.let { result ->
-        result.onSuccess { isAuthenticated ->
-            when {
-                isAuthenticated -> {
-                    navController.navigate(Routes.HomeScreen.route) {
-                        popUpTo(Routes.SplashScreen.route) { inclusive = true }
-                    }
-                }
-
-                else -> {
-                    navController.navigate(Routes.LoginScreen.route) {
-                        popUpTo(Routes.SplashScreen.route) { inclusive = true }
-                    }
+    LaunchedEffect(state) {
+        when (state) {
+            is SplashState.Navigate -> {
+                navController.navigate(Routes.HomeScreen.route) {
+                    popUpTo(Routes.SplashScreen.route) { inclusive = true }
                 }
             }
-        }.onFailure {
-            navController.navigate(Routes.LoginScreen.route) {
-                popUpTo(Routes.SplashScreen.route) { inclusive = true }
-            }
+            else -> {}
         }
     }
 
