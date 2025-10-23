@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.imasha.infotap.ui.screens.home.HomeScreen
 import com.imasha.infotap.ui.screens.login.LoginScreen
+import com.imasha.infotap.ui.screens.saved.SavedScreen
 import com.imasha.infotap.ui.screens.search.SearchScreen
 import com.imasha.infotap.ui.screens.search.SearchViewModel
 import com.imasha.infotap.ui.screens.splash.SplashScreen
@@ -27,6 +28,10 @@ fun NavGraph() {
 
         composable(Routes.HomeScreen.route) {
             HomeScreen(navController)
+        }
+
+        composable(Routes.SavedScreen.route) {
+            SavedScreen(navController)
         }
 
         composable(Routes.SearchScreen.route) {

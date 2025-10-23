@@ -32,9 +32,11 @@ fun BottomNavigation(navController: NavController) {
                 onClick = {
                     when (item) {
                         "Home" -> navController.navigate(Routes.HomeScreen.route) {
-                            popUpTo("home") { inclusive = true }
+                            popUpTo(Routes.HomeScreen.route) { inclusive = true }
                         }
-                        "Saved" -> navController.navigate(Routes.SavedScreen.route)
+                        "Saved" -> navController.navigate(Routes.SavedScreen.route) {
+                            popUpTo(Routes.SavedScreen.route) { inclusive = true }
+                        }
                         "Settings" -> navController.navigate(Routes.SettingScreen.route)
                     }
                 }
