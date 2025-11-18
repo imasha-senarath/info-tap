@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.imasha.infotap.R
-import com.imasha.infotap.ui.components.BottomNavigation
 import com.imasha.infotap.utils.Dimens.MediumPadding1
 
 @Composable
@@ -31,9 +30,6 @@ fun SavedScreen(
 ) {
 
     Scaffold(
-        bottomBar = {
-            BottomNavigation(navController)
-        }
     ) { innerPadding ->
         Column(
             modifier = Modifier

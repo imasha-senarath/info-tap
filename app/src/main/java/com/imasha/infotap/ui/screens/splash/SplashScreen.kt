@@ -32,7 +32,7 @@ fun SplashScreen(
     LaunchedEffect(state) {
         when (state) {
             is SplashState.Navigate -> {
-                navController.navigate(Routes.HomeScreen.route) {
+                navController.navigate(Routes.MainScreen.route) {
                     popUpTo(Routes.SplashScreen.route) { inclusive = true }
                 }
             }

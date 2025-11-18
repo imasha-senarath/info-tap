@@ -18,27 +18,35 @@ import com.imasha.infotap.ui.navigation.Routes
 
 @Composable
 fun BottomNavigation(navController: NavController) {
-    val items = listOf("Home", "Saved", "Settings")
+    val items = listOf(Routes.HomeScreen.route, Routes.SavedScreen.route, Routes.SettingScreen.route)
     val icons = listOf(Icons.Default.Home, Icons.Default.Star, Icons.Default.Settings)
 
     NavigationBar (
         modifier = Modifier.height(60.dp)
     ) {
+        val currentRoute = navController.currentBackStackEntry?.destination?.route
+
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 icon = { Icon(icons[index], contentDescription = item) },
                 label = { Text(item) },
-                selected = false,
+                selected = currentRoute == item,
                 onClick = {
-                    when (item) {
+                    navController.navigate(item) {
+                        popUpTo(Routes.HomeScreen.route)
+                        launchSingleTop = true
+                    }
+                    /*when (item) {
                         "Home" -> navController.navigate(Routes.HomeScreen.route) {
                             popUpTo(Routes.HomeScreen.route) { inclusive = true }
                         }
                         "Saved" -> navController.navigate(Routes.SavedScreen.route) {
-                            popUpTo(Routes.SavedScreen.route) { inclusive = true }
+                            popUpTo(Routes.HomeScreen.route) { inclusive = true }
                         }
-                        "Settings" -> navController.navigate(Routes.SettingScreen.route)
-                    }
+                        "Settings" -> navController.navigate(Routes.SettingScreen.route) {
+                            popUpTo(Routes.HomeScreen.route) { inclusive = true }
+                        }
+                    }*/
                 }
             )
         }

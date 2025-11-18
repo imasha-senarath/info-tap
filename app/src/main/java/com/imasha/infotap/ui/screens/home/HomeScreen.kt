@@ -28,7 +28,6 @@ import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.imasha.infotap.R
 import com.imasha.infotap.ui.components.ArticlesList
-import com.imasha.infotap.ui.components.BottomNavigation
 import com.imasha.infotap.ui.components.SearchBar
 import com.imasha.infotap.ui.navigation.Routes
 import com.imasha.infotap.utils.Dimens.MediumPadding1
@@ -53,9 +52,7 @@ fun HomeScreen(
     }
 
     Scaffold(
-        bottomBar = {
-            BottomNavigation(navController)
-        }
+
     ) { innerPadding ->
         Column(
             modifier = Modifier
