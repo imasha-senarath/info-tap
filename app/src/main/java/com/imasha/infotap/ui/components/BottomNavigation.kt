@@ -1,6 +1,5 @@
 package com.imasha.infotap.ui.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -19,9 +18,10 @@ import com.imasha.infotap.ui.navigation.Routes
 @Composable
 fun BottomNavigation(navController: NavController) {
     val items = listOf(Routes.HomeScreen.route, Routes.SavedScreen.route, Routes.SettingScreen.route)
+    val titles = listOf("Home", "Saved", "Settings")
     val icons = listOf(Icons.Default.Home, Icons.Default.Star, Icons.Default.Settings)
 
-    NavigationBar (
+    NavigationBar(
         modifier = Modifier.height(60.dp)
     ) {
         val currentRoute = navController.currentBackStackEntry?.destination?.route
@@ -29,24 +29,13 @@ fun BottomNavigation(navController: NavController) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 icon = { Icon(icons[index], contentDescription = item) },
-                label = { Text(item) },
+                label = { Text(titles[index]) },
                 selected = currentRoute == item,
                 onClick = {
                     navController.navigate(item) {
-                        popUpTo(Routes.HomeScreen.route)
+                        popUpTo(0)
                         launchSingleTop = true
                     }
-                    /*when (item) {
-                        "Home" -> navController.navigate(Routes.HomeScreen.route) {
-                            popUpTo(Routes.HomeScreen.route) { inclusive = true }
-                        }
-                        "Saved" -> navController.navigate(Routes.SavedScreen.route) {
-                            popUpTo(Routes.HomeScreen.route) { inclusive = true }
-                        }
-                        "Settings" -> navController.navigate(Routes.SettingScreen.route) {
-                            popUpTo(Routes.HomeScreen.route) { inclusive = true }
-                        }
-                    }*/
                 }
             )
         }
