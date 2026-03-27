@@ -13,9 +13,9 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val newsUseCases: NewsUseCases
 ): ViewModel() {
+
     private var _state = mutableStateOf(SearchState())
     val state: State<SearchState> = _state
-
 
     fun onEvent(event: SearchEvent) {
         when (event) {

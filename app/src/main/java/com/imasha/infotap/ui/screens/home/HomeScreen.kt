@@ -27,6 +27,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.imasha.infotap.R
+import com.imasha.infotap.domain.model.Article
 import com.imasha.infotap.ui.components.ArticlesList
 import com.imasha.infotap.ui.components.SearchBar
 import com.imasha.infotap.ui.navigation.Routes
@@ -36,6 +37,7 @@ import com.imasha.infotap.utils.Dimens.MediumPadding1
 fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel(),
+    navigateToDetails: (Article) -> Unit
 ) {
     val articles = viewModel.news.collectAsLazyPagingItems()
 
@@ -111,9 +113,7 @@ fun HomeScreen(
             ArticlesList(
                 modifier = Modifier.padding(horizontal = MediumPadding1),
                 articles = articles,
-                onClick = {
-                    //TODO: Navigate to Details Screen
-                }
+                onClick = navigateToDetails
             )
         }
     }

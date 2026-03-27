@@ -36,6 +36,7 @@ fun SearchScreen(
             ArticlesList(
                 articles = articles,
                 onClick = {
+
                     //TODO: Navigate to details screen
                 }
             )
