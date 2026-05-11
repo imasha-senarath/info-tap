@@ -27,7 +27,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModels<MainViewModel>()
-    //@Inject lateinit var dao: NewsDao
+    @Inject lateinit var dao: NewsDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
             }*/
         }
 
-        /*lifecycleScope.launch {
+        lifecycleScope.launch {
             dao.saveArticles(
                 Article(
                     author = "",
@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
                     urlToImage = "https://media.wired.com/photos/6495d5e893ba5cd8bbdc95af/191:100/w_1280,c_limit/The-EU-Rules-Phone-Batteries-Must-Be-Replaceable-Gear-2BE6PRN.jpg"
                 )
             )
-        }*/
+        }
 
         setContent {
             InfoTapTheme {

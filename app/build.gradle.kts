@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias (libs.plugins.hilt.android)
+    alias(libs.plugins.devtools.ksp)
+
     id ("kotlin-kapt")
     id ("kotlin-parcelize")
 }
@@ -106,6 +108,6 @@ dependencies {
 
     //Room
     implementation(libs.androidx.room.runtime)
-    annotationProcessor (libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }
