@@ -9,7 +9,7 @@ import com.imasha.infotap.domain.model.Article
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface  NewsDao {
+interface NewsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveArticles(article: Article)

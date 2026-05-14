@@ -11,12 +11,15 @@ import com.imasha.infotap.data.repository.NewsRepositoryImpl
 import com.imasha.infotap.domain.manager.LocalUserManager
 import com.imasha.infotap.domain.repository.NewsRepository
 import com.imasha.infotap.domain.usecases.AppEntryUseCases
-import com.imasha.infotap.domain.usecases.GetNews
+import com.imasha.infotap.domain.usecases.DeleteSavedNewsUseCase
+import com.imasha.infotap.domain.usecases.GetNewsUseCase
 import com.imasha.infotap.domain.usecases.LoginUseCase
 import com.imasha.infotap.domain.usecases.NewsUseCases
 import com.imasha.infotap.domain.usecases.ReadAppEntry
 import com.imasha.infotap.domain.usecases.SaveAppEntry
-import com.imasha.infotap.domain.usecases.SearchNews
+import com.imasha.infotap.domain.usecases.SaveNewsUseCase
+import com.imasha.infotap.domain.usecases.SearchNewsUseCase
+import com.imasha.infotap.domain.usecases.GetSavedNewsUseCase
 import com.imasha.infotap.utils.Constants.BASE_URL
 import com.imasha.infotap.utils.Constants.NEWS_DATABASE_NAME
 import dagger.Module
@@ -68,11 +71,15 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsUseCases(
-        newsRepository: NewsRepository
+        newsRepository: NewsRepository,
+        newsDao: NewsDao
     ): NewsUseCases {
         return NewsUseCases(
-            getNews = GetNews(newsRepository),
-            searchNews = SearchNews(newsRepository)
+            getNewsUseCase = GetNewsUseCase(newsRepository),
+            searchNewsUseCase = SearchNewsUseCase(newsRepository),
+            saveNewsUseCase = SaveNewsUseCase(newsDao),
+            deleteSavedNewsUseCase = DeleteSavedNewsUseCase(newsDao),
+            getSavedNewsUseCase = GetSavedNewsUseCase(newsDao),
         )
     }
 

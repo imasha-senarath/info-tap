@@ -15,7 +15,8 @@ import com.imasha.infotap.ui.components.BottomNavigation
 import com.imasha.infotap.ui.navigation.Routes
 import com.imasha.infotap.ui.screens.details.DetailsScreen
 import com.imasha.infotap.ui.screens.home.HomeScreen
-import com.imasha.infotap.ui.screens.saved.SavedScreen
+import com.imasha.infotap.ui.screens.bookmark.BookmarkScreen
+import com.imasha.infotap.ui.screens.bookmark.BookmarkViewModel
 import com.imasha.infotap.ui.screens.search.SearchScreen
 import com.imasha.infotap.ui.screens.search.SearchViewModel
 import com.imasha.infotap.ui.screens.setting.SettingScreen
@@ -51,7 +52,8 @@ fun MainScreen(
                 }
 
                 composable(Routes.SavedScreen.route) {
-                    SavedScreen(navController)
+                    val viewModel: BookmarkViewModel = hiltViewModel()
+                    BookmarkScreen(state = viewModel.state.value, navigateToDetails = {})
                 }
 
                 composable(Routes.SettingScreen.route) {
@@ -72,14 +74,14 @@ fun MainScreen(
 
                 composable(Routes.SearchScreen.route) {
                     val viewModel: SearchViewModel = hiltViewModel()
-                    SearchScreen (viewModel.state.value, event = viewModel::onEvent)
+                    SearchScreen(viewModel.state.value, event = viewModel::onEvent)
                 }
             }
         }
     }
 }
 
-private fun navigateToDetails(navController: NavController, article: Article){
+private fun navigateToDetails(navController: NavController, article: Article) {
     navController.currentBackStackEntry?.savedStateHandle?.set("article", article)
     navController.navigate(
         route = Routes.DetailsScreen.route

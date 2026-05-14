@@ -1,9 +1,10 @@
-package com.imasha.infotap.ui.screens.saved
+package com.imasha.infotap.ui.screens.bookmark
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,15 +19,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.imasha.infotap.R
+import com.imasha.infotap.domain.model.Article
+import com.imasha.infotap.ui.components.ArticlesList
 import com.imasha.infotap.utils.Dimens.MediumPadding1
 
 @Composable
-fun SavedScreen(
-    navController: NavController,
-    viewModel: SavedViewModel = hiltViewModel(),
+fun BookmarkScreen(
+    state: BookmarkState,
+    navigateToDetails: (Article) -> Unit
 ) {
 
     Scaffold(
@@ -52,11 +53,19 @@ fun SavedScreen(
                         .height(40.dp)
                 )
                 Text(
-                    text = "Saved", modifier = Modifier
+                    text = "Bookmark", modifier = Modifier
                         .fillMaxWidth()
                         .basicMarquee(), fontSize = 22.sp,
                 )
             }
+
+            Spacer(modifier = Modifier.height(MediumPadding1))
+
+            ArticlesList(
+                modifier = Modifier.padding(horizontal = MediumPadding1),
+                articles = state.articles,
+                onClick = navigateToDetails
+            )
         }
     }
 }

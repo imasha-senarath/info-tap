@@ -6,7 +6,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.imasha.infotap.ui.screens.login.LoginScreen
 import com.imasha.infotap.ui.screens.main.MainScreen
-import com.imasha.infotap.ui.screens.saved.SavedScreen
 import com.imasha.infotap.ui.screens.splash.SplashScreen
 
 @Composable
@@ -34,9 +33,9 @@ fun NavGraph() {
             HomeScreen(navController)
         }*/
 
-        composable(Routes.SavedScreen.route) {
+        /*composable(Routes.SavedScreen.route) {
             SavedScreen(navController)
-        }
+        }*/
 
         /*composable(Routes.SearchScreen.route) {
             val viewModel: SearchViewModel = hiltViewModel()
