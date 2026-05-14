@@ -63,7 +63,6 @@ fun HomeScreen(
                 .padding(top = MediumPadding1)
                 .statusBarsPadding()
         ) {
-
             Row(
                 modifier = Modifier
                     .padding(horizontal = MediumPadding1),
@@ -103,7 +102,7 @@ fun HomeScreen(
             Text(
                 text = titles, modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = MediumPadding1)
+                    .padding(start = MediumPadding1, end = MediumPadding1)
                     .basicMarquee(), fontSize = 12.sp,
                 color = colorResource(id = R.color.placeholder)
             )
