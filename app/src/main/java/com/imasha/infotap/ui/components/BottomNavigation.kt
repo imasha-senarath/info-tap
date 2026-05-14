@@ -17,8 +17,8 @@ import com.imasha.infotap.ui.navigation.Routes
 
 @Composable
 fun BottomNavigation(navController: NavController) {
-    val items = listOf(Routes.HomeScreen.route, Routes.SavedScreen.route, Routes.SettingScreen.route)
-    val titles = listOf("Home", "Bookmark", "Settings")
+    val items = listOf(Routes.HomeScreen.route, Routes.SavedScreen.route)
+    val titles = listOf("Home", "Bookmark")
     val icons = listOf(Icons.Default.Home, Icons.Default.Star, Icons.Default.Settings)
 
     NavigationBar(

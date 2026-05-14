@@ -19,7 +19,6 @@ import com.imasha.infotap.ui.screens.bookmark.BookmarkScreen
 import com.imasha.infotap.ui.screens.bookmark.BookmarkViewModel
 import com.imasha.infotap.ui.screens.search.SearchScreen
 import com.imasha.infotap.ui.screens.search.SearchViewModel
-import com.imasha.infotap.ui.screens.setting.SettingScreen
 
 @Composable
 fun MainScreen(
@@ -54,10 +53,6 @@ fun MainScreen(
                 composable(Routes.SavedScreen.route) {
                     val viewModel: BookmarkViewModel = hiltViewModel()
                     BookmarkScreen(state = viewModel.state.value, navigateToDetails = {})
-                }
-
-                composable(Routes.SettingScreen.route) {
-                    SettingScreen(navController)
                 }
 
                 composable(route = Routes.DetailsScreen.route) {

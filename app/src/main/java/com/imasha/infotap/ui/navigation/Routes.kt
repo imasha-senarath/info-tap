@@ -14,6 +14,4 @@ sealed class Routes(val route: String) {
     data object DetailsScreen : Routes(route = "detailsScreen")
 
     data object SavedScreen : Routes(route = "savedScreen")
-
-    data object SettingScreen : Routes(route = "settingScreen")
 }
