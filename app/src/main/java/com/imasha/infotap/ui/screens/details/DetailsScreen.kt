@@ -54,7 +54,7 @@ fun DetailsScreen (
                 }
             },
             onBookMarkClick = {
-                event(DetailsEvent.SaveArticle)
+                //event(DetailsEvent.SaveArticle)
             },
             onBackClick = navigateUp
         )

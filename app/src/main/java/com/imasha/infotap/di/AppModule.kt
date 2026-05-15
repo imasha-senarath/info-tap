@@ -20,6 +20,7 @@ import com.imasha.infotap.domain.usecases.SaveAppEntry
 import com.imasha.infotap.domain.usecases.SaveNewsUseCase
 import com.imasha.infotap.domain.usecases.SearchNewsUseCase
 import com.imasha.infotap.domain.usecases.GetSavedNewsUseCase
+import com.imasha.infotap.domain.usecases.SelectNewsUseCase
 import com.imasha.infotap.utils.Constants.BASE_URL
 import com.imasha.infotap.utils.Constants.NEWS_DATABASE_NAME
 import dagger.Module
@@ -80,6 +81,7 @@ object AppModule {
             saveNewsUseCase = SaveNewsUseCase(newsDao),
             deleteSavedNewsUseCase = DeleteSavedNewsUseCase(newsDao),
             getSavedNewsUseCase = GetSavedNewsUseCase(newsDao),
+            selectNewsUseCase = SelectNewsUseCase(newsDao),
         )
     }
 

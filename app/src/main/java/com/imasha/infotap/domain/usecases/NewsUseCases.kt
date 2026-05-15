@@ -6,4 +6,5 @@ data class NewsUseCases(
     val saveNewsUseCase: SaveNewsUseCase,
     val deleteSavedNewsUseCase: DeleteSavedNewsUseCase,
     val getSavedNewsUseCase: GetSavedNewsUseCase,
+    val selectNewsUseCase: SelectNewsUseCase,
 )
