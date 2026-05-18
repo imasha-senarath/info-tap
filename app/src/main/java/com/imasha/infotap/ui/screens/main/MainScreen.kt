@@ -15,6 +15,7 @@ import com.imasha.infotap.ui.navigation.Routes
 import com.imasha.infotap.ui.screens.bookmark.BookmarkScreen
 import com.imasha.infotap.ui.screens.bookmark.BookmarkViewModel
 import com.imasha.infotap.ui.screens.details.DetailsScreen
+import com.imasha.infotap.ui.screens.details.DetailsViewModel
 import com.imasha.infotap.ui.screens.home.HomeScreen
 import com.imasha.infotap.ui.screens.search.SearchScreen
 import com.imasha.infotap.ui.screens.search.SearchViewModel
@@ -52,11 +53,12 @@ fun MainScreen(
             }
 
             composable(route = Routes.DetailsScreen.route) {
+                val viewModel: DetailsViewModel = hiltViewModel()
                 navController.previousBackStackEntry?.savedStateHandle?.get<Article?>("article")
                     ?.let { article ->
                         DetailsScreen(
                             article = article,
-                            event = {},
+                            event = viewModel::onEvent,
                             navigateUp = { navController.navigateUp() }
                         )
                     }

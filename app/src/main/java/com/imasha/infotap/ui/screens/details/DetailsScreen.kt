@@ -36,14 +36,6 @@ fun DetailsScreen (
 
     Column(modifier = Modifier.fillMaxSize().statusBarsPadding()) {
         DetailsTopBar(
-            onBrowsingClick = {
-                Intent(Intent.ACTION_VIEW).also {
-                    it.data = article.url.toUri()
-                    if (it.resolveActivity(context.packageManager) != null) {
-                        context.startActivity(it)
-                    }
-                }
-            },
             onShareClick = {
                 Intent(Intent.ACTION_SEND).also {
                     it.putExtra(Intent.EXTRA_TEXT, article.url)
@@ -54,7 +46,15 @@ fun DetailsScreen (
                 }
             },
             onBookMarkClick = {
-                //event(DetailsEvent.SaveArticle)
+                event(DetailsEvent.SaveDeleteArticle(article))
+            },
+            onBrowsingClick = {
+                Intent(Intent.ACTION_VIEW).also {
+                    it.data = article.url.toUri()
+                    if (it.resolveActivity(context.packageManager) != null) {
+                        context.startActivity(it)
+                    }
+                }
             },
             onBackClick = navigateUp
         )

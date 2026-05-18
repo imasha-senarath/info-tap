@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize @Entity
 data class Article(
-    val author: String,
+    val author: String?,
     val content: String,
     val description: String,
     val publishedAt: String,

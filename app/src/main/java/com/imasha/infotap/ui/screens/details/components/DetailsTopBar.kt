@@ -44,24 +44,21 @@ fun DetailsTopBar(
             }
         },
         actions = {
-
             IconButton(onClick = onBookMarkClick) {
                 Icon(
-                    //bookmark
                     painter = painterResource(id = R.drawable.ic_bookmark),
+                    contentDescription = null
+                )
+            }
+            IconButton(onClick = onBrowsingClick) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_browser),
                     contentDescription = null
                 )
             }
             IconButton(onClick = onShareClick) {
                 Icon(
                     imageVector = Icons.Default.Share,
-                    contentDescription = null
-                )
-            }
-            IconButton(onClick = onBrowsingClick) {
-                Icon(
-                    //network
-                    painter = painterResource(id = R.drawable.ic_bookmark),
                     contentDescription = null
                 )
             }
