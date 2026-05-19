@@ -1,25 +1,23 @@
 package com.imasha.infotap.ui.components
 
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.imasha.infotap.R
 import com.imasha.infotap.ui.navigation.Routes
 
 @Composable
 fun BottomNavigation(navController: NavController) {
-    val items = listOf(Routes.HomeScreen.route, Routes.SavedScreen.route)
-    val titles = listOf("Home", "Bookmark")
-    val icons = listOf(Icons.Default.Home, Icons.Default.Star, Icons.Default.Settings)
+    val items = listOf(Routes.HomeScreen.route, Routes.SearchScreen.route, Routes.SavedScreen.route)
+    val titles = listOf("Home", "Search", "Bookmark")
+    val icons = listOf(R.drawable.ic_home, R.drawable.ic_search, R.drawable.ic_bookmark)
 
     NavigationBar(
         modifier = Modifier.height(60.dp)
@@ -28,7 +26,12 @@ fun BottomNavigation(navController: NavController) {
 
         items.forEachIndexed { index, item ->
             NavigationBarItem(
-                icon = { Icon(icons[index], contentDescription = item) },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = icons[index]),
+                        contentDescription = item
+                    )
+                },
                 label = { Text(titles[index]) },
                 selected = currentRoute == item,
                 onClick = {
