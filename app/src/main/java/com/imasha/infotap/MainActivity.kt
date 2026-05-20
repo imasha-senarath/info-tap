@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.imasha.infotap.data.local.NewsDao
-import com.imasha.infotap.ui.navigation.AppNavGraph
+import com.imasha.infotap.ui.navigation.NavGraph
 import com.imasha.infotap.ui.theme.InfoTapTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-                    AppNavGraph()
+                    NavGraph()
                 }
             }
         }

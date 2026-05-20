@@ -12,7 +12,7 @@ import com.imasha.infotap.ui.screens.main.MainScreen
 import com.imasha.infotap.ui.screens.splash.SplashScreen
 
 @Composable
-fun AppNavGraph() {
+fun NavGraph() {
     val navController = rememberNavController()
 
     NavHost(
@@ -35,7 +35,8 @@ fun AppNavGraph() {
                     DetailsScreen(
                         article = article,
                         event = viewModel::onEvent,
-                        navigateUp = { navController.navigateUp() }
+                        navigateUp = { navController.navigateUp() },
+                        sideEffect = viewModel.sideEffect
                     )
                 }
 

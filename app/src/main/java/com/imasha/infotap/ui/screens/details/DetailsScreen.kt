@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -23,16 +24,29 @@ import coil.request.ImageRequest
 import com.imasha.infotap.R
 import com.imasha.infotap.domain.model.Article
 import com.imasha.infotap.ui.screens.details.components.DetailsTopBar
+import com.imasha.infotap.utils.AppDialog
 import com.imasha.infotap.utils.Dimens.ArticleImageHeight
 import com.imasha.infotap.utils.Dimens.MediumPadding1
+import com.imasha.infotap.utils.UIComponent
 
 @Composable
 fun DetailsScreen (
     article: Article,
     event: (DetailsEvent) -> Unit,
-    navigateUp: () -> Unit
+    navigateUp: () -> Unit,
+    sideEffect: UIComponent?,
 ) {
     val context = LocalContext.current
+
+    LaunchedEffect(sideEffect) {
+        when (val effect = sideEffect) {
+            is UIComponent.Toast -> {
+                AppDialog.showToast(context, effect.message)
+                event(DetailsEvent.RemoveSideEffect)
+            }
+            else -> Unit
+        }
+    }
 
     Column(modifier = Modifier.fillMaxSize().statusBarsPadding()) {
         DetailsTopBar(
