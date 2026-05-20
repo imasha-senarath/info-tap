@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.imasha.infotap.domain.usecases.NewsUseCases
+import com.imasha.infotap.domain.usecases.GetSavedNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
-    private val newsUseCases: NewsUseCases
+    private val getSavedNewsUseCase: GetSavedNewsUseCase
 ): ViewModel() {
 
     private val _state = mutableStateOf(BookmarkState())
@@ -23,7 +23,7 @@ class BookmarkViewModel @Inject constructor(
     }
 
     private fun getArticles() {
-        newsUseCases.getSavedNewsUseCase().onEach {
+        getSavedNewsUseCase().onEach {
             _state.value = _state.value.copy(articles = it)
         }.launchIn(viewModelScope)
     }

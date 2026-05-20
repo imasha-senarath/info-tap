@@ -14,7 +14,6 @@ import com.imasha.infotap.domain.usecases.AppEntryUseCases
 import com.imasha.infotap.domain.usecases.DeleteSavedNewsUseCase
 import com.imasha.infotap.domain.usecases.GetNewsUseCase
 import com.imasha.infotap.domain.usecases.LoginUseCase
-import com.imasha.infotap.domain.usecases.NewsUseCases
 import com.imasha.infotap.domain.usecases.ReadAppEntry
 import com.imasha.infotap.domain.usecases.SaveAppEntry
 import com.imasha.infotap.domain.usecases.SaveNewsUseCase
@@ -64,25 +63,58 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsRepository(
-        newsApi: NewsApi
+        newsApi: NewsApi,
+        newsDao: NewsDao
     ): NewsRepository {
-        return NewsRepositoryImpl(newsApi)
+        return NewsRepositoryImpl(newsApi, newsDao)
     }
 
     @Provides
     @Singleton
-    fun provideNewsUseCases(
-        newsRepository: NewsRepository,
-        newsDao: NewsDao
-    ): NewsUseCases {
-        return NewsUseCases(
-            getNewsUseCase = GetNewsUseCase(newsRepository),
-            searchNewsUseCase = SearchNewsUseCase(newsRepository),
-            saveNewsUseCase = SaveNewsUseCase(newsDao),
-            deleteSavedNewsUseCase = DeleteSavedNewsUseCase(newsDao),
-            getSavedNewsUseCase = GetSavedNewsUseCase(newsDao),
-            selectNewsUseCase = SelectNewsUseCase(newsDao),
-        )
+    fun provideGetNewsUseCase(
+        newsRepository: NewsRepository
+    ): GetNewsUseCase {
+        return GetNewsUseCase(newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchNewsUseCase(
+        newsRepository: NewsRepository
+    ): SearchNewsUseCase {
+        return SearchNewsUseCase(newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSaveNewsUseCase(
+        newsRepository: NewsRepository
+    ): SaveNewsUseCase {
+        return SaveNewsUseCase(newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDeleteSavedNewsUseCase(
+        newsRepository: NewsRepository
+    ): DeleteSavedNewsUseCase {
+        return DeleteSavedNewsUseCase(newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetSavedNewsUseCase(
+        newsRepository: NewsRepository
+    ): GetSavedNewsUseCase {
+        return GetSavedNewsUseCase(newsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSelectNewsUseCase(
+        newsRepository: NewsRepository
+    ): SelectNewsUseCase {
+        return SelectNewsUseCase(newsRepository)
     }
 
     @Provides

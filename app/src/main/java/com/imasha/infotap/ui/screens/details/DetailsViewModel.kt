@@ -6,7 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.imasha.infotap.domain.model.Article
-import com.imasha.infotap.domain.usecases.NewsUseCases
+import com.imasha.infotap.domain.usecases.DeleteSavedNewsUseCase
+import com.imasha.infotap.domain.usecases.SaveNewsUseCase
+import com.imasha.infotap.domain.usecases.SelectNewsUseCase
 import com.imasha.infotap.utils.UIComponent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,7 +16,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val newsUseCases: NewsUseCases
+    private val selectNewsUseCase: SelectNewsUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase,
+    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
 ): ViewModel() {
 
     var sideEffect by mutableStateOf<UIComponent?>(null)
@@ -24,7 +28,7 @@ class DetailsViewModel @Inject constructor(
         when (event) {
             is DetailsEvent.SaveDeleteArticle -> {
                 viewModelScope.launch {
-                    val article = newsUseCases.selectNewsUseCase(event.article.url)
+                    val article = selectNewsUseCase(event.article.url)
                     if (article == null){
                         saveArticle(article = event.article)
                     }else{
@@ -40,12 +44,12 @@ class DetailsViewModel @Inject constructor(
     }
 
     private suspend fun saveArticle(article: Article) {
-        newsUseCases.saveNewsUseCase(article = article)
+        saveNewsUseCase(article = article)
         sideEffect = UIComponent.Toast("Article inserted.")
     }
 
     private suspend fun deleteArticle(article: Article) {
-        newsUseCases.deleteSavedNewsUseCase(article = article)
+        deleteSavedNewsUseCase(article = article)
         sideEffect = UIComponent.Toast("Article deleted.")
     }
 }

@@ -1,12 +1,12 @@
 package com.imasha.infotap.domain.usecases
 
-import com.imasha.infotap.data.local.NewsDao
 import com.imasha.infotap.domain.model.Article
+import com.imasha.infotap.domain.repository.NewsRepository
 
 class DeleteSavedNewsUseCase(
-    private val newsDao: NewsDao
+    private val newsRepository: NewsRepository
 ) {
     suspend operator fun invoke(article: Article){
-        newsDao.delete(article = article)
+        newsRepository.deleteNews(article)
     }
 }
