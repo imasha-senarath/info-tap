@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.imasha.infotap.domain.model.Article
 import com.imasha.infotap.ui.components.ArticlesList
 import com.imasha.infotap.ui.components.SearchBar
 import com.imasha.infotap.utils.Dimens.MediumPadding1
@@ -15,7 +16,8 @@ import com.imasha.infotap.utils.Dimens.MediumPadding1
 @Composable
 fun SearchScreen(
     state: SearchState,
-    event:(SearchEvent) -> Unit
+    event:(SearchEvent) -> Unit,
+    navigateToDetails: (Article) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -35,10 +37,7 @@ fun SearchScreen(
             val articles = it.collectAsLazyPagingItems()
             ArticlesList(
                 articles = articles,
-                onClick = {
-
-                    //TODO: Navigate to details screen
-                }
+                onClick = navigateToDetails
             )
         }
     }

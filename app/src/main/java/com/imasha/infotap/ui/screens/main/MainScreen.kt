@@ -42,12 +42,21 @@ fun MainScreen(
                             navController = mainNavController,
                             article = article
                         )
-                    })
+                    }
+                )
             }
 
             composable(Routes.SearchScreen.route) {
                 val viewModel: SearchViewModel = hiltViewModel()
-                SearchScreen(viewModel.state.value, event = viewModel::onEvent)
+                SearchScreen(
+                    viewModel.state.value,
+                    event = viewModel::onEvent,
+                    navigateToDetails = { article ->
+                        navigateToDetailsScreen(
+                            navController = mainNavController,
+                            article = article
+                        )
+                    })
             }
 
             composable(Routes.BookmarkScreen.route) {
