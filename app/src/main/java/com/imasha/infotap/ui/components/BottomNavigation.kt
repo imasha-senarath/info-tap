@@ -6,10 +6,12 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.imasha.infotap.R
 import com.imasha.infotap.ui.navigation.Routes
 
@@ -22,7 +24,8 @@ fun BottomNavigation(navController: NavController) {
     NavigationBar(
         modifier = Modifier.height(60.dp)
     ) {
-        val currentRoute = navController.currentBackStackEntry?.destination?.route
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
 
         items.forEachIndexed { index, item ->
             NavigationBarItem(

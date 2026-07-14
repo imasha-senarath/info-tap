@@ -25,6 +25,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.imasha.infotap.R
@@ -59,6 +60,7 @@ fun ArticleCard(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
+        Spacer(modifier = Modifier.width(8.dp))
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             modifier = Modifier

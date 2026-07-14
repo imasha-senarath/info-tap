@@ -9,12 +9,14 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.imasha.infotap.domain.model.Article
 import com.imasha.infotap.ui.components.BottomNavigation
 import com.imasha.infotap.ui.navigation.Routes
 import com.imasha.infotap.ui.screens.bookmark.BookmarkScreen
 import com.imasha.infotap.ui.screens.bookmark.BookmarkViewModel
 import com.imasha.infotap.ui.screens.home.HomeScreen
+import com.imasha.infotap.ui.screens.home.HomeViewModel
 import com.imasha.infotap.ui.screens.search.SearchScreen
 import com.imasha.infotap.ui.screens.search.SearchViewModel
 
@@ -35,8 +37,10 @@ fun MainScreen(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Routes.HomeScreen.route) {
+                val viewModel: HomeViewModel = hiltViewModel()
                 HomeScreen(
-                    bottomNavController,
+                    navController = bottomNavController,
+                    articles = viewModel.news.collectAsLazyPagingItems(),
                     navigateToDetails = { article ->
                         navigateToDetailsScreen(
                             navController = mainNavController,
@@ -49,7 +53,7 @@ fun MainScreen(
             composable(Routes.SearchScreen.route) {
                 val viewModel: SearchViewModel = hiltViewModel()
                 SearchScreen(
-                    viewModel.state.value,
+                    state = viewModel.state.value,
                     event = viewModel::onEvent,
                     navigateToDetails = { article ->
                         navigateToDetailsScreen(
