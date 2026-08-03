@@ -136,6 +136,7 @@ object AppModule {
             name = NEWS_DATABASE_NAME
         ).addTypeConverter(NewsTypeConvertor())
             .fallbackToDestructiveMigration()
+            .addMigrations(NewsDatabase.MIGRATION_1_2)
             .build()
     }
 
