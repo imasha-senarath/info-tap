@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.imasha.infotap.testing.NullSafetyTest
 import com.imasha.infotap.ui.navigation.NavGraph
 import com.imasha.infotap.ui.theme.InfoTapTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +22,9 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //NullSafetyTest.runAllTests()
+
         installSplashScreen().apply {}
 
         setContent {
